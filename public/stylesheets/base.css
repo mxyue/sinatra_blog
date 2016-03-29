@@ -1,10 +1,6 @@
-  body {
-        padding-top: 75px;
-      }
-  .starter-template {
-    padding: 40px 15px;
-    text-align: center;
+body {
+    padding-top: 75px;
   }
-  .container {
-    max-width:1000px;
-  }
+.container {
+max-width:1000px;
+}
