@@ -3,3 +3,5 @@ D, [2016-03-27T22:53:47.588984 #4066] DEBUG -- :   [1m[35m (0.1ms)[0m  begin 
 D, [2016-03-27T22:53:47.603475 #4066] DEBUG -- :   [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "你好长度个"], ["body", "双方都"], ["created_at", "2016-03-27 14:53:47.595254"], ["updated_at", "2016-03-27 14:53:47.595254"]]
 D, [2016-03-27T22:53:47.605045 #4066] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
 D, [2016-03-27T22:53:47.634531 #4066] DEBUG -- :   [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+D, [2016-03-27T23:47:02.062673 #4066] DEBUG -- :   [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 3]]
+D, [2016-03-27T23:47:03.812161 #4066] DEBUG -- :   [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"  ORDER BY created_at DESC[0m
