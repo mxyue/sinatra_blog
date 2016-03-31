@@ -3,12 +3,9 @@ require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
 require './environments'
-require 'grape'
-require 'grape-entity'
+
 Dir.glob('controllers/*.rb').each { |r| require_relative r }
 Dir.glob('models/*.rb').each { |r| require_relative r }
-
-require './apis/api'
 
 
 # enable :sessions
