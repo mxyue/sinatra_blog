@@ -11,11 +11,13 @@ class PostsAPI < Grape::API
         requires :body, type: String
     end
     post do
-        status 200
-        if Post.create(title: params[:title], body: params[:body])
+        
+        post = Post.new(title: params[:title], body: params[:body])
+        if post.save 
+            status 200
             {success: true}
         else
-            {success: false}
+            {success: false, error: '标题长度不够'}
         end
 
     end
