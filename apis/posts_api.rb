@@ -17,7 +17,8 @@ class PostsAPI < Grape::API
             status 200
             {success: true}
         else
-            {success: false, error: '标题长度不够'}
+            status 400
+            {error: '标题长度不够'}
         end
 
     end
