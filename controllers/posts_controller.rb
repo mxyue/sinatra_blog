@@ -1,26 +1,33 @@
-get "/" do
+
+get '/' do
   @posts = Post.order("created_at DESC")
-  @title = "post."
-  erb :"posts/index"
+  erb :'posts/index'
 end
 
-get "/posts/new" do
- @title = "Create post"
- @post = Post.new
- erb :"posts/new"
+get '/posts/new' do
+    check_authentication
+     @post = Post.new(user: current_user)
+     erb :'posts/new'
 end
 
-get "/posts/:id" do
- @post = Post.find(params[:id])
- @title = @post.title
- erb :"posts/show"
-end
+# get "/posts/:id" do
+#  @post = Post.find(params[:id])
+#  @title = @post.title
+#  erb :"posts/show"
+# end
 
-post "/posts" do
- @post = Post.new(params[:post])
+post '/posts' do
+ logger.info params
+ check_authentication
+ @post = Post.new(post_params)
  if @post.save
-   redirect "posts/#{@post.id}"
+   redirect '/'
  else
-   erb :"posts/new"
+   erb :'posts/new'
  end
+end
+
+private
+def post_params
+  params[:post].except(:id).merge(user_id: current_user.id)
 end

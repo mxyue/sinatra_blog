@@ -21,6 +21,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     bond (0.5.1)
     builder (3.2.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.4)
@@ -43,9 +47,19 @@ GEM
     i18n (0.7.0)
     ice_nine (0.11.2)
     json (1.8.3)
+    mime-types (3.0)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0221)
+    mimemagic (0.3.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    paperclip (4.3.6)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     rack (1.6.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -89,6 +103,8 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
+    warden (1.2.6)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -97,12 +113,14 @@ DEPENDENCIES
   activerecord
   grape
   grape-entity
+  paperclip
   sinatra
   sinatra-activerecord
   sinatra-flash
   sinatra-redirect-with-flash
   sqlite3
   tux
+  warden
 
 BUNDLED WITH
    1.10.6

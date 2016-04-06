@@ -2,7 +2,7 @@
 <% @posts.each do |post| %>
  <li>
    <h4>
-    <a href="/posts/<%= post.id %>"><%= post.title %></a>
+    <span><%= post.user.try(:username) %></span> <%= post.content %>
    </h4>
    <p>创建时间: <%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
  </li>
