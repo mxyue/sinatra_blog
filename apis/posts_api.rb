@@ -1,4 +1,14 @@
 class PostsAPI < Grape::API
+
+  params do
+    requires :access_token, type: String, desc: '用户的access_token'
+  end
+
+  before do
+    authenticate_user!
+  end
+
+
   resource :posts do
     desc '获取帖子列表'
     get do
@@ -11,7 +21,6 @@ class PostsAPI < Grape::API
         requires :body, type: String
     end
     post do
-        
         post = Post.new(title: params[:title], body: params[:body])
         if post.save 
             status 200
@@ -20,9 +29,8 @@ class PostsAPI < Grape::API
             status 400
             {error: '标题长度不够'}
         end
-
     end
-    
+
     params do
         requires :id
     end

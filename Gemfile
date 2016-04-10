@@ -8,9 +8,10 @@ gem 'sinatra-redirect-with-flash'
 gem 'grape'
 gem 'grape-entity'
 gem 'sqlite3'
-gem 'paperclip'
-gem "warden"
+gem 'paperclip', '~> 5.0.0.beta1'
+gem 'warden'
+gem 'jwt'
 
 group :development do
- gem "tux"
+ gem 'tux'
 end

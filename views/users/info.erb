@@ -1,0 +1,13 @@
+用户名：<%= current_user.email %>
+头像：<%= current_user.avatar %>
+
+<!--<form action="/user/info" method="post" >-->
+  <!--编辑头像: <input type="file" name="avatar">-->
+  <!--<input type="submit" value="提交">-->
+<!--</form>-->
+
+<form action="/user/info" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <input type="submit" value="提交">
+</form>
+
