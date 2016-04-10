@@ -5,3 +5,4 @@ sinatra_application.sqlite3.db
 /log/*.log
 /tmp
 tmp/pids/unicorn.pid
+/public/resources/*

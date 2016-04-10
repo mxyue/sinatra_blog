@@ -5,7 +5,7 @@ Dir.glob("#{__dir__}/entities/*.rb").each { |r| require_relative r }
 Dir.glob("#{__dir__}/*.rb").each { |r| require_relative r }
 
 class API < Grape::API
-  prefix :api # set the url prefix
+  prefix :api
   format :json
   content_type :json, 'application/json;charset=UTF-8'
 

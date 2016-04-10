@@ -8,7 +8,6 @@ class PostsAPI < Grape::API
     authenticate_user!
   end
 
-
   resource :posts do
     desc '获取帖子列表'
     get do
@@ -17,18 +16,30 @@ class PostsAPI < Grape::API
 
     desc '创建帖子'
     params do
-        requires :title, type: String
-        requires :body, type: String
+        requires :content, type: String
+        optional :pictures
     end
     post do
-        post = Post.new(title: params[:title], body: params[:body])
-        if post.save 
-            status 200
-            {success: true}
-        else
-            status 400
-            {error: '标题长度不够'}
+      pictures = []
+      (params[:pictures]||[]).each do |pic|
+        filename = pic[:filename]
+        file = pic[:tempfile]
+
+        File.open("/Users/mxyue/study/sinatra/sinatra_blog/public/resources/user_avatars/#{filename}", 'wb') do |f|
+          f.write(file.read)
         end
+        pictures << filename.to_s
+      end
+
+
+      post = Post.new(content: params[:content], pictures: pictures, user: current_user)
+      if post.save
+          status 200
+          {success: true}
+      else
+          status 400
+          {error: '标题长度不够'}
+      end
     end
 
     params do

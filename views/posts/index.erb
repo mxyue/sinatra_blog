@@ -2,8 +2,13 @@
 <% @posts.each do |post| %>
  <li>
    <h4>
-    <span><%= post.user.try(:email) %></span> <%= post.content %>
+    <span><%= post.user.try(:email).presence || post.user.try(:username)  %></span> <%= post.content %>
    </h4>
+   <div>
+     <% post.pictures.each do |p|%>
+        <img src="<%= "/resources/user_avatars/#{p}" %>" alt="">
+     <% end %>
+   </div>
    <p>创建时间: <%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
  </li>
 <% end %>
