@@ -5,11 +5,15 @@ class SessionAPI < Grape::API
       requires :password, type: String
     end
     post do
-      status 200
+      
       user = User.find_by(username: params[:username])
-      if user.password == params[:password]
-        access_token = JWT.encode({username: user.username, exp: 1.day.from_now.to_i}, 'key')
+      if user && user.password == params[:password]
+        status 200
+        access_token = JWT.encode({username: user.username, exp: 7.day.from_now.to_i}, 'key')
         {access_token: access_token}
+      else
+        status 401
+        {error: '密码错误或则用户不存在'}
       end
     end
   end

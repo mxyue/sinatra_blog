@@ -21,16 +21,18 @@ class PostsAPI < Grape::API
     end
     post do
       pictures = []
-      (params[:pictures]||[]).each do |pic|
-        filename = pic[:filename]
-        file = pic[:tempfile]
+      if params[:pictures].present?
+        (params[:pictures]||[]).each do |pic|
+          filename = pic[:filename]
+          file = pic[:tempfile]
 
-        File.open("/Users/mxyue/study/sinatra/sinatra_blog/public/resources/user_avatars/#{filename}", 'wb') do |f|
-          f.write(file.read)
+          File.open("/Users/mxyue/study/sinatra/sinatra_blog/public/resources/user_avatars/#{filename}", 'wb') do |f|
+            f.write(file.read)
+          end
+          pictures << filename.to_s
         end
-        pictures << filename.to_s
-      end
-
+      end  
+    
 
       post = Post.new(content: params[:content], pictures: pictures, user: current_user)
       if post.save
