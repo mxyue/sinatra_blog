@@ -5,7 +5,7 @@
     <span><%= post.user.try(:email).presence || post.user.try(:username)  %></span> <%= post.content %>
    </h4>
    <div  class="row">
-     <% (post.pictures  || []).each do |p|%>
+     <% (post.pictures.presence  || []).each do |p|%>
         <div class="col-sm-6 col-md-3">
             <a href="#" class="thumbnail" ><img src="<%= "/resources/user_avatars/#{p}" %>" alt=""></a>
         </div>
