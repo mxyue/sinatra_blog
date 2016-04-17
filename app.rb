@@ -8,7 +8,6 @@ require 'warden'
 Dir.glob('controllers/*.rb').each { |r| require_relative r }
 Dir.glob('models/*.rb').each { |r| require_relative r }
 
-
 use Rack::Session::Cookie, :secret => "dsfsdfsdfsfsd"
 
 
