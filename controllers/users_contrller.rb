@@ -10,7 +10,7 @@ post '/user/info' do
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
 
-  File.open("/Users/mxyue/study/resources/user_avatars/#{@filename}", 'wb') do |f|
+  File.open("/resources/user_avatars/#{@filename}", 'wb') do |f|
     f.write(file.read)
   end
 

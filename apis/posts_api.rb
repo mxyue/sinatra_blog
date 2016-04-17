@@ -27,7 +27,7 @@ class PostsAPI < Grape::API
           filename = pic[:filename]
           file = pic[:tempfile]
 
-          File.open("/Users/mxyue/study/sinatra/sinatra_blog/public/resources/user_avatars/#{filename}", 'wb') do |f|
+          File.open("public/resources/post_pictures/#{filename}", 'wb') do |f|
             f.write(file.read)
           end
           pictures << filename.to_s

@@ -19,7 +19,7 @@ class UsersAPI < Grape::API
       filename = params[:avatar][:filename]
       file = params[:avatar][:tempfile]
 
-      File.open("/Users/mxyue/study/resources/user_avatars/#{filename}", 'wb') do |f|
+      File.open("public/resources/user_avatars/#{filename}", 'wb') do |f|
         f.write(file.read)
       end
       current_user.update(avatar: filename)
