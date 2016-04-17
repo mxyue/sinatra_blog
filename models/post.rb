@@ -6,6 +6,6 @@ class Post < ActiveRecord::Base
     # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
     def pictures_url
-        pictures.map{|picture| Settings.domain+ '/resources/post_pictures/'+picture } if pictures.present?
+        pictures.map{|picture| "#{::Settings.domain}/resources/post_pictures/#{picture}" } if pictures.present?
     end
 end 
