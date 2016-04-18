@@ -1,5 +1,11 @@
 class PostsAPI < Grape::API
 
+  helpers do
+    def logger
+      API.logger
+    end
+  end
+
   params do
     requires :access_token, type: String, desc: '用户的access_token'
   end
@@ -24,6 +30,7 @@ class PostsAPI < Grape::API
       pictures = []
       if params[:pictures].present?
         (params[:pictures]||[]).each do |pic|
+          logger.info pic[:filename]
           filename = pic[:filename]
           file = pic[:tempfile]
 
