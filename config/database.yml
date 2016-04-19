@@ -1,2 +1,15 @@
-adapter: sqlite3
-database: sinatra_application.sqlite3.db
+default: &default
+  adapter: sqlite3
+  schema_search_path: public
+
+development:
+  <<: *default
+  database: sinatra_blog_development.sqlite3.db
+
+test:
+  <<: *default
+  database: sinatra_blog_test.sqlite3.db
+
+production:
+  <<: *default
+  database: sinatra_blog.sqlite3.db

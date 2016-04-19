@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
-require './environments'
+require './config/environments'
 require 'warden'
 
 Dir.glob('controllers/*.rb').each { |r| require_relative r }
