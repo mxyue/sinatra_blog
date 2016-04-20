@@ -12,7 +12,8 @@ gem 'paperclip', '~> 5.0.0.beta1'
 gem 'warden'
 gem 'jwt'
 gem 'settingslogic'
-gem 'kaminari'
+gem 'will_paginate'
+
 gem 'unirest'
 
 group :development do

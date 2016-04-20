@@ -4,12 +4,13 @@ require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
 require './config/environments'
 require 'warden'
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 Dir.glob('controllers/*.rb').each { |r| require_relative r }
 Dir.glob('models/*.rb').each { |r| require_relative r }
 
 use Rack::Session::Cookie, :secret => "dsfsdfsdfsfsd"
-
 
 use Warden::Manager do |manager|
   manager.default_strategies :password

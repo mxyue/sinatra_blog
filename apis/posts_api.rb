@@ -15,9 +15,14 @@ class PostsAPI < Grape::API
   end
 
   resource :posts do
+    params do
+      optional :page, default: 1
+      optional :per_page, default: 20
+    end
     desc '获取帖子列表'
     get do
-      present ::Post.all.includes(:user).order(created_at: :desc), with: Entities::Post
+      present ::Post.paginate(page: params[:page],per_page: params[:per_page]).includes(:user).
+                  order(created_at: :desc), with: Entities::Post
     end
 
     desc '创建帖子'

@@ -1,6 +1,9 @@
 require 'grape'
 require 'grape-entity'
 require 'jwt'
+require 'will_paginate'
+require 'will_paginate'
+
 Dir.glob("#{__dir__}/entities/*.rb").each { |r| require_relative r }
 Dir.glob("#{__dir__}/*.rb").each { |r| require_relative r }
 

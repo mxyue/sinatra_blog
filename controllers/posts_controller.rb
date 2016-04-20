@@ -1,6 +1,6 @@
 
 get '/' do
-  @posts = Post.order("created_at DESC")
+  @posts = Post.order('created_at DESC').paginate(:page => params[:page])
   erb :'posts/index'
 end
 
