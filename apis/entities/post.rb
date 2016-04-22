@@ -10,5 +10,7 @@ module Entities
         expose :created_at do |post|
             post.created_at.strftime('%Y-%m-%d %H:%M:%S')
         end
+
+        # expose :total_pages
     end
 end
