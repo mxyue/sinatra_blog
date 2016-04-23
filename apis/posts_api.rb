@@ -18,12 +18,22 @@ class PostsAPI < Grape::API
     params do
       optional :page,type: Integer, default: 1
       optional :per_page,type: Integer, default: 10
+      optional :last_dynamic_at,type: Integer, default: 0
     end
     desc '获取帖子列表'
     get do
-      posts = ::Post.paginate(page: params[:page],per_page: params[:per_page]).includes(:user).
-          order(created_at: :desc)
-      present posts , with: Entities::Post
+      logger.info "request params: #{params}"
+      if params[:page]==1 && params[:last_dynamic_at] == current_user.last_dynamic_at
+        logger.info 'posts no update, status 203'
+        status 203
+        present :message, 'no update'
+      else
+        logger.info 'get post list, status 200'
+        posts = ::Post.paginate(page: params[:page],per_page: params[:per_page]).includes(:user).
+            order(created_at: :desc)
+        present :last_dynamic_at, current_user.last_dynamic_at
+        present posts , with: Entities::Post
+      end
     end
 
     desc '创建帖子'

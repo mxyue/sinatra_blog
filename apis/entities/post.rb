@@ -8,7 +8,7 @@ module Entities
             post.user.try(:username)
         end
         expose :created_at do |post|
-            post.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            post.created_at.to_i
         end
 
         # expose :total_pages

@@ -1,9 +1,9 @@
+ENV['RACK_ENV'] = 'test'
 require 'grape'
 require 'grape-entity'
 require 'database_cleaner'
 require 'rack/test'
 
-ENV['RACK_ENV'] = 'test'
 require File.expand_path('../../apis/api.rb', __FILE__)
 require File.expand_path('../../app.rb', __FILE__)
 
