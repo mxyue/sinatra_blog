@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://gems.ruby-china.org/'
 
 gem 'sinatra'
 gem 'activerecord'
@@ -15,10 +15,13 @@ gem 'settingslogic'
 gem 'will_paginate'
 
 gem 'unirest'
+gem 'whenever', :require => false
+
+gem 'rake'
+
 
 group :development do
  gem 'tux'
- gem 'rake'
 end
 
 group :test do
